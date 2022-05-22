@@ -9,7 +9,19 @@ jobs:
     name: Budowa i publikacja obrazw na repozytorium
     runs-on: ubuntu-latest
     steps:
-
+      - name: Cache multiple paths
+        uses: actions/cache@v3
+        with:
+          path: |
+            ~/cache
+            !~/cache/exclude
+          key: ${{ runner.os }}-${{ hashFiles('**/lockfiles') }}
+      - uses: actions/cache@v3
+        with:
+          path: |
+            path/to/dependencies
+            some/other/dependencies
+          key: ${{ runner.os }}-${{ hashFiles('**/lockfiles') }}     
       - name: Checkout code
         uses: actions/checkout@v2
 
