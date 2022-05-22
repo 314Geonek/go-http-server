@@ -32,9 +32,9 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           context: ./
-          platforms: linux/amd64,linux/arm/v7
+          platforms: linux/amd64,linux/arm/v7,linux/arm64/v8
           file: ./dockerfile
           push: true
           tags: |
-            314geonek/lab2:latest
+            314geonek/go-http-server:latest
           
