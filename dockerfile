@@ -15,4 +15,5 @@ COPY --from=build /docker-gs-ping /docker-gs-ping
 copy index.html /index.html
 EXPOSE 8084
 USER nonroot:nonroot
-ENTRYPOINT ["/docker-gs-ping"]
+ENTRYPOINT ["/docker-gs-ping"]  
+ 
