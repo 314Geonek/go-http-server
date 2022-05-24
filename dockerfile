@@ -13,6 +13,6 @@ FROM gcr.io/distroless/base-debian10
 WORKDIR /
 COPY --from=build /docker-gs-ping /docker-gs-ping
 copy index.html /index.html
-EXPOSE 1234
+EXPOSE 8084
 USER nonroot:nonroot
 ENTRYPOINT ["/docker-gs-ping"]

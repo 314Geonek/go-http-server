@@ -52,10 +52,9 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           context: ./
-          platforms: linux/amd64
+          platforms: linux/amd64,linux/arm/v7,linux/arm64/v8 
           file: ./dockerfile  
           push: true
           tags: |
             ghcr.io/${{ github.repository }}:latest
-# 314geonek/go-http-server:latest
-#,linux/arm/v7,linux/arm64/v8 
+            314geonek/go-http-server:latest
