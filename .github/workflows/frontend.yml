@@ -57,5 +57,4 @@ jobs:
           push: true
           tags: |
             314geonek/go-http-server:latest
-            ghcr.io/${{ github.repository }}:${{ github.ref }}
             ghcr.io/${{ github.repository }}:latest
