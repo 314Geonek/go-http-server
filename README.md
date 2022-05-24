@@ -54,3 +54,6 @@ gdzie
 ```
 <Repository-Name> = "314geonek/go-http-server:latest" , "ghcr.io/314geonek/go-http-server"
 ```
+W projekcie zostal dodany eksport/import cache dzięki czemu build jest znacznie szybszy 
+![image](https://user-images.githubusercontent.com/69900955/170118995-fdbfe1d2-f2c2-4637-a490-c7de890ddb9c.png)
+
