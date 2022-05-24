@@ -7,11 +7,11 @@ docker buildx build -t <YOUR-DOCKERHUB-REPOSITORY> --platform linux/amd64,linux/
 ```
 *Uruchomienia kontenera na podstawie zbudowanego obrazu
 ```
-docker run –name <NAME> <YOUR-DOCKERHUB-REPOSITORY> 
+docker run –name <ContainerName> <YOUR-DOCKERHUB-REPOSITORY> 
 ```
 *Sposobu uzyskania informacji, które wygenerował serwer w trakcie uruchamiana kontenera
 ```
-docker logs <image>
+docker logs <ContainerName>
 ```
 *Sprawdzenia, ile warstw posiada zbudowany obraz
 ```
