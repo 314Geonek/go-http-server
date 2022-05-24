@@ -1,5 +1,5 @@
 FROM golang:1.16-buster AS build
-
+MAINTAINER "Łukasz Przychodzień"
 WORKDIR /app
 
 COPY go.mod ./
