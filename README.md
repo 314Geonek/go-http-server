@@ -1,21 +1,25 @@
+# Uwaga 
 # Zad 3
 Należy podać polecenia niezbędne do: 
-
-* Zbudowania opracowanego obrazu kontenera,
+* Zbudowania opracowanego obrazu kontenera (W moim przypadku odbyło się to poprzez github actions),
 ```
-docker buildx build -t <YOUR-DOCKERHUB-REPOSITORY> --platform linux/amd64,linux/arm/v7,linux/arm64/v8 --push .
+docker buildx build -t 314geonek/go-http-server:latest --platform linux/amd64,linux/arm/v7,linux/arm64/v8 --push .
 ```
 * Uruchomienia kontenera na podstawie zbudowanego obrazu
 ```
-docker run –name <ContainerName> <YOUR-DOCKERHUB-REPOSITORY> 
+docker run --name goHttpd -p 8084:8084 <Repository-Name>
 ```
 * Sposobu uzyskania informacji, które wygenerował serwer w trakcie uruchamiana kontenera
 ```
-docker logs <ContainerName>
+docker logs goHttpd
 ```
 * Sprawdzenia, ile warstw posiada zbudowany obraz
 ```
-docker history -q imageName | wc -l     
+docker history -q <Repository-Name> | wc -l     
+```
+* gdzie 
+```
+<Repository-Name> = "314geonek/go-http-server:latest" , "ghcr.io/314geonek/go-http-server"
 ```
 
 # O moim rozwiązaniu
