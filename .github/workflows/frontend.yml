@@ -9,21 +9,13 @@ jobs:
     name: Budowa i publikacja obrazw na repozytorium
     runs-on: ubuntu-latest
     steps:
-      - name: Cache multiple paths
-        uses: actions/cache@v3
+      - name: Cache Docker layers
+        uses: actions/cache@v2
         with:
-          path: |
-            ~/cache
-            !~/cache/exclude
-          key: ${{ runner.os }}-${{ hashFiles('**/lockfiles') }}
-      - uses: actions/cache@v3
-        with:
-          path: |
-            ~/.cache/go-build
-            ~/go/pkg/mod
-          key: ${{ runner.os }}-go-${{ hashFiles('**/go.sum') }}
+          path: /tmp/.buildx-cache
+          key: ${{ runner.os }}-single-buildx-${{ github.sha }}
           restore-keys: |
-            ${{ runner.os }}-go-     
+            ${{ runner.os }}-single-buildx
       - name: Checkout code
         uses: actions/checkout@v2
 
@@ -58,3 +50,10 @@ jobs:
           tags: |
             ghcr.io/${{ github.repository }}:latest
             314geonek/go-http-server:latest
+          cache-from: type=local,src=/tmp/.buildx-cache
+          cache-to: type=local,dest=/tmp/.buildx-cache-new
+      
+      - name: Move cache
+        run: |
+          rm -rf /tmp/.buildx-cache
+          mv /tmp/.buildx-cache-new /tmp/.buildx-cache
