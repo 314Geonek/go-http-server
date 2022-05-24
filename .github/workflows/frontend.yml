@@ -47,7 +47,7 @@ jobs:
         with:
           context: ./
           platforms: linux/amd64,linux/arm/v7,linux/arm64/v8
-          file: ./dockerfile
+          file: ./dockerfile  
           push: true
           tags: |
             314geonek/go-http-server:latest
@@ -55,6 +55,9 @@ jobs:
       - name: Build and publish a Docker image for ${{ github.repository }}
         uses: macbre/push-to-ghcr@master
         with:
+          context: ./
+          platforms: linux/amd64,linux/arm/v7,linux/arm64/v8
+          file: ./dockerfile  
           image_name: ${{ github.repository }}
           github_token: ${{ secrets.GITHUBTOKEN }}
           
