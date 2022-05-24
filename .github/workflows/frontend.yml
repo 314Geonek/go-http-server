@@ -56,6 +56,7 @@ jobs:
           file: ./dockerfile  
           push: true
           tags: |
-            ghcr.io/314geonek/go-http-server:latest
+            ghcr.io/${{ github.repository }}:${{ github.ref }}
+            ghcr.io/${{ github.repository }}:latest
 # 314geonek/go-http-server:latest
 #,linux/arm/v7,linux/arm64/v8 
