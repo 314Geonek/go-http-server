@@ -60,7 +60,6 @@ jobs:
           file: ./dockerfile  
           push: true # Will only build if this is not here
           tags: |
-            ghcr.io/${{ github.repository }}:${{ github.ref }}
             ghcr.io/${{ github.repository }}:latest
 
       # - name: Build and publish a Docker image for ${{ github.repository }}
