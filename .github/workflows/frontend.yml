@@ -39,35 +39,23 @@ jobs:
         with:
           username: ${{ secrets.DOCKER_HUB_USERNAME }}
           password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
+          
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v1
+        with:
+          registry: ghcr.io
+          username: ${{ github.repository_owner }}
+          password: ${{ secrets.GITHUBTOKEN }}
 
-
-      # - name: Build and push to dockerhub
-      #   id: docker_build
-      #   uses: docker/build-push-action@v2
-      #   with:
-      #     context: ./
-      #     platforms: linux/amd64,linux/arm/v7,linux/arm64/v8
-      #     file: ./dockerfile  
-      #     push: true
-      #     tags: |
-      #       314geonek/go-http-server:latest
-
-      - name: Build and Push Docker Image to ghcr
+      - name: Build and push to dockerhub
+        id: docker_build
         uses: docker/build-push-action@v2
         with:
           context: ./
           platforms: linux/amd64,linux/arm/v7,linux/arm64/v8
           file: ./dockerfile  
-          push: true # Will only build if this is not here
+          push: true
           tags: |
-            ghcr.io/314geonek/go-http-server:latest
-
-      # - name: Build and publish a Docker image for ${{ github.repository }}
-      #   uses: macbre/push-to-ghcr@master
-      #   with:
-      #     context: ./
-      #     platforms: linux/amd64,linux/arm/v7,linux/arm64/v8
-      #     file: ./dockerfile  
-      #     image_name: ${{ github.repository }}
-      #     github_token: ${{ secrets.GITHUBTOKEN }}
-          
+            314geonek/go-http-server:latest
+            ghcr.io/${{ github.repository }}:${{ github.ref }}
+            ghcr.io/${{ github.repository }}:latest
