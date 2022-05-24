@@ -1,4 +1,3 @@
-# Uwaga 
 # Zad 3
 Należy podać polecenia niezbędne do: 
 * Zbudowania opracowanego obrazu kontenera (W moim przypadku odbyło się to poprzez github actions),
@@ -46,5 +45,12 @@ echo $CR_PAT | docker login ghcr.io -u USERNAME --password-stdin
 ```
 docker pull 314geonek/go-http-server:latest
 ```
-
-
+# Uwaga 
+Przy uruchomieniu należy pamiętać o zmapowaniu portu 
+```
+docker run --name goHttpd -p 8084:8084 <Repository-Name>
+```
+gdzie 
+```
+<Repository-Name> = "314geonek/go-http-server:latest" , "ghcr.io/314geonek/go-http-server"
+```
