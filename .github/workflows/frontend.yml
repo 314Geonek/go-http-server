@@ -58,12 +58,12 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           context: ./
-          platforms: linux/amd64,linux/arm/v7,linux/arm64/v8 
+          platforms: linux/amd64
           file: ./dockerfile  
-          push: true
-          tags: |
-            ghcr.io/${{ github.repository }}:latest
-            314geonek/go-http-server:latest
+          # push: true
+          # tags: |
+          #   ghcr.io/${{ github.repository }}:latest
+          #   314geonek/go-http-server:latest
           cache-from: type=local,src=/tmp/.buildx-cache
           cache-to: type=local,dest=/tmp/.buildx-cache-new
      
@@ -78,7 +78,7 @@ jobs:
           aws_secret_key: ${{ secrets.AWS_SECRET_KEY }}
           application_name: pwcholab2
           environment_name: Pwcholab2-env
-          existing_bucket_name: elasticbeanstalk-us-east-1-236655117972
+          existing_bucket_name: elasticbeanstalk-us-east-1:236655117972
           version_label: "docker-app-${{ steps.format-time.outputs.replaced }}"
           deployment_package: deploy.zip
 
